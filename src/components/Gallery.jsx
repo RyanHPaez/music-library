@@ -1,9 +1,20 @@
+// Gallery.js
+import React, {useContext} from 'react'
+import { DataContext } from '../context/DataContext'
 import GalleryItem from './GalleryItem'
 
-function Gallery(props){
-    return (
-        <div>
-            <GalleryItem />
+function Gallery(props) {
+    const data = useContext(DataContext)
+
+    const display = data.map((item, index) => {
+        return(
+            <GalleryItem item={item} key={index} />
+        )
+    })
+
+    return(
+        <div style={{'display': 'flex', 'flexFlow': 'wrap row'}}>
+            {display}
         </div>
     )
 }
